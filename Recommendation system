@@ -1,0 +1,43 @@
+# Content-Based Filtering Recommendation System
+
+# Sample dataset: Movies and their genres
+movies = {
+    'The Matrix': ['Action', 'Sci-Fi'],
+    'Inception': ['Action', 'Sci-Fi', 'Thriller'],
+    'Titanic': ['Romance', 'Drama'],
+    'Gladiator': ['Action', 'Drama'],
+    'Interstellar': ['Sci-Fi', 'Drama']
+}
+
+# User preferences for genres
+user_preferences = {
+    'Alice': ['Action', 'Sci-Fi'],
+    'Bob': ['Drama', 'Romance'],
+    'Charlie': ['Action', 'Sci-Fi', 'Drama']
+}
+
+# Function to recommend movies based on user's preferred genres
+def recommend_movies_content(user, user_preferences, movies):
+    preferred_genres = user_preferences[user]
+    recommendations = []
+
+    # Check each movie and see how many genres match the user's preferences
+    for movie, genres in movies.items():
+        match_score = 0
+        for genre in genres:
+            if genre in preferred_genres:
+                match_score += 1
+        
+        if match_score > 0:
+            recommendations.append((movie, match_score))
+    
+    # Sort and return the recommended movies
+    recommendations.sort(key=lambda x: x[1], reverse=True)
+    return recommendations
+
+# Example usage
+user = 'Alice'
+recommended = recommend_movies_content(user, user_preferences, movies)
+print(f"Recommended movies for {user}:")
+for movie, score in recommended:
+    print(f"{movie} (score: {score})")

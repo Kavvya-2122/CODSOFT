@@ -1,0 +1,33 @@
+# Simple rule-based chatbot
+
+def chatbot():
+    # Greet the user
+    print("Chatbot: Hello! I'm a simple chatbot. How can I help you today? (type 'exit' to end the chat)")
+
+    while True:
+        # Get input from the user
+        user_input = input("You: ").lower()
+
+        # Exit condition
+        if user_input == 'exit':
+            print("Chatbot: Goodbye!")
+            break
+
+        # Respond based on user input
+        if 'hello' in user_input or 'hi' in user_input:
+            print("Chatbot: Hi there! How can I assist you today?")
+        elif 'how are you' in user_input:
+            print("Chatbot: I'm just a program, but I'm doing well! How about you?")
+        elif 'name' in user_input:
+            print("Chatbot: I don't have a name, but you can call me Chatbot!")
+        elif 'weather' in user_input:
+            print("Chatbot: I'm not sure about the weather, but you can check a weather app or website.")
+        elif 'time' in user_input:
+            print("Chatbot: I can't tell the time, but you can check a clock or your phone.")
+        else:
+            # Default response for unrecognized input
+            print("Chatbot: Sorry, I don't understand that. Can you ask something else?")
+
+# Start the chatbot
+if __name__ == "__main__":
+    chatbot()
